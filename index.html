@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ShareDraw</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h2>Welcome to ShareDraw</h2>
+  <p>Use the address <span id='currentAddress'>/1231</span> and share it with anyone for real-time drawing collaboration.</p>
+
+  <script type="text/x-handlebars">
+    {{outlet}}
+  </script>
+
+
+  <div>
+    <canvas id="drawingCanvas" width="480" height="480"></canvas>
+  </div>
+
+
+  <script type="text/x-handlebars" id="index">
+    <div id='color-holder'>
+      <ul id='color-samples'>
+        {{#each}}
+        <li style='background-color:{{unbound hexCode}}'></li>
+        {{/each}}
+      </ul>
+    </div>
+  </script>
+
+
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/handlebars-1.1.2.js"></script>
+  <script src="js/libs/underscore.js"></script>
+  <script src="js/libs/ember-1.4.0.js"></script>
+  <script src="js/libs/ember-data.js"></script>
+  <script src="js/libs/localstorage_adapter.js"></script>
+  <script src="js/libs/firebase.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/models/color.js"></script>
+  <script src="js/scripts/draw.js"></script>
+</body>
+</html>
