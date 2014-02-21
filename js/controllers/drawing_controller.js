@@ -6,14 +6,15 @@ App.DrawingController = Ember.ObjectController.extend({
   dataRef: null,
   ctx: null,
 
-  nextDrawing: function(){
-    return 1
-  },
-
-  setCanvas: function() {
+  init: function() {
+    this._super()
     this.dataRef = new Firebase('https://sharedraw.firebaseio.com/');
     this.createContext()
     this.setListeners()
+  },
+
+  nextDrawing: function(){
+    return 1
   },
 
   createContext: function(){
@@ -55,6 +56,16 @@ App.DrawingController = Ember.ObjectController.extend({
   drawFromCoords: function(x, y, color){
     this.ctx.fillStyle = color;
     this.ctx.fillRect(x, y, this.pixelSize, this.pixelSize);
-  }
+  },
 
+  actions: {
+    new: function() {
+      setCanvas()
+    },
+
+    clearCanvas: function(){
+      dataRef.remove()
+    }
+
+  }
 });

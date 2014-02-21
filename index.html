@@ -15,12 +15,13 @@
   </script>
 
 
-  <div>
-    <canvas id="drawingCanvas" width="480" height="480"></canvas>
-  </div>
+  <script type="text/x-handlebars" id="index">
+    <div>
+      <canvas id="drawingCanvas" width="480" height="480"></canvas>
+    </div>
 
+    <button id="clear-canvas" {{action "clearCanvas"}}>Clear Canvas</button>
 
-  <script type="text/x-handlebars" id="colors">
     <div id='color-holder'>
       <ul id='color-samples'>
         {{#each}}
@@ -40,8 +41,8 @@
   <script src="js/libs/firebase.js"></script>
   <script src="js/app.js"></script>
   <script src="js/models/color.js"></script>
+  <script src="js/views/index_view.js"></script>
   <script src="js/models/drawing.js"></script>
   <script src="js/controllers/drawing_controller.js"></script>
-  <script src="js/scripts/draw.js"></script>
 </body>
 </html>
