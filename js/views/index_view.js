@@ -1,9 +1,9 @@
-App.IndexView = Em.View.extend({
-    templateName: 'index',
+App.DrawingsView = Em.View.extend({
 
     didInsertElement: function() {
       // This creates a new DrawingController upon index load
-      // Which in turn run the init function, setting the canvas
-      App.DrawingController.create();
+      // And then calls the setCanvas function, ensuring the canvas exists
+      var controller = App.DrawingsController.create();
+      controller.setCanvas()
     }
 }) ;

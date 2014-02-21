@@ -1,24 +1,27 @@
-App.DrawingController = Ember.ObjectController.extend({
+App.DrawingsController = Ember.ArrayController.extend({
 
   color: '#000',
   pixelSize: 8,
   drawing: false,
-  dataRef: null,
+  dataRef: new Firebase('https://sharedraw.firebaseio.com/'),
   ctx: null,
 
-  init: function() {
-    this._super()
-    this.dataRef = new Firebase('https://sharedraw.firebaseio.com/');
+  actions: {
+    clearCanvas: function(){
+      this.dataRef.remove()
+    }
+  },
+
+  setCanvas: function() {
+    console.log('creating')
     this.createContext()
     this.setListeners()
   },
 
-  nextDrawing: function(){
-    return 1
-  },
-
   createContext: function(){
+    console.log('looking for canvas')
     var canvas = $("#drawingCanvas").get(0);
+    console.log(canvas)
     this.ctx = canvas.getContext("2d");
   },
 
@@ -56,10 +59,5 @@ App.DrawingController = Ember.ObjectController.extend({
   drawFromCoords: function(x, y, color){
     this.ctx.fillStyle = color;
     this.ctx.fillRect(x, y, this.pixelSize, this.pixelSize);
-  },
-
-
-  clearCanvas: function(){
-    dataRef.remove()
   }
 });
