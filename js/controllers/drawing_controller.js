@@ -58,14 +58,8 @@ App.DrawingController = Ember.ObjectController.extend({
     this.ctx.fillRect(x, y, this.pixelSize, this.pixelSize);
   },
 
-  actions: {
-    new: function() {
-      setCanvas()
-    },
 
-    clearCanvas: function(){
-      dataRef.remove()
-    }
-
+  clearCanvas: function(){
+    dataRef.remove()
   }
 });
